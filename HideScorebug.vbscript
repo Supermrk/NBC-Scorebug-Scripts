@@ -1,0 +1,32 @@
+'Script created by Supermrk (mrkVideo.live)
+'==========================================
+'Title: Hide Scorebug
+'Desc: Hides the NBC Scorebug
+
+
+'SETTING VARIABLES
+'==========================================
+dim CompiledScorebug = "Scorebug"
+dim ScorebugName = "Main Scorebug"
+dim Scorebug = Input.Find(ScorebugName)
+dim AwayYardage = "Away Yardage"
+dim HomeYardage = "Home Yardage"
+
+'LOGIC
+'==========================================
+dim currentPosses1 as String = Scorebug.Text("HomeBPossess.Text")
+dim currentPosses2 as String = Scorebug.Text("HomeSPossess.Text")
+
+if currentPosses1 = "●" Or currentPosses2 = "●" then
+    API.Function("TitleBeginAnimation", Input:=HomeYardage, Value:="TransitionOut")
+else
+    API.Function("TitleBeginAnimation", Input:=AwayYardage, Value:="TransitionOut")
+End If
+
+Sleep(500)
+
+API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="TransitionOut")
+
+Sleep(2000)
+
+API.Function("OverlayInput1Out", Input:=CompiledScorebug)

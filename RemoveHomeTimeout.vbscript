@@ -1,0 +1,57 @@
+'Script created by Supermrk (mrkVideo.live)
+'==========================================
+'Title: Remove Home Timeout
+'Desc: Controls removing an Home Timeout by setting the Text and playing the Animations
+
+
+'SETTING VARIABLES
+'==========================================
+dim ScorebugName = "Main Scorebug"
+dim Scorebug = Input.Find(ScorebugName)
+dim HomeYardage = "Home Yardage"
+dim TimeoutsName = "Timeouts"
+
+'LOGIC
+'==========================================
+dim timeoutText = Scorebug.Text("HomeTimeouts.Text")
+
+if timeoutText = "__ __ __" then
+    API.Function("SetText",Input:=HomeYardage,SelectedName:="TimeoutTXT.Text",Value:="FIRST TIMEOUT")
+    API.Function("TitleBeginAnimation",Input:=TimeoutsName,Value:="Page1")
+    Sleep(1000)
+    API.Function("TitleBeginAnimation",Input:=HomeYardage,Value:="Page1")
+    Sleep(250)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__ __")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__ __ __")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__ __")
+    API.Function("SetText",Input:="Home Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__ __")
+    API.Function("SetText",Input:="Away Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__ __")
+else if timeoutText = "__ __" then
+    API.Function("SetText",Input:=HomeYardage,SelectedName:="TimeoutTXT.Text",Value:="SECOND TIMEOUT")
+    API.Function("TitleBeginAnimation",Input:=TimeoutsName,Value:="Page1")
+    Sleep(1000)
+    API.Function("TitleBeginAnimation",Input:=HomeYardage,Value:="Page1")
+    Sleep(250)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__ __")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__")
+    API.Function("SetText",Input:="Home Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__")
+    API.Function("SetText",Input:="Away Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__")
+else if timeoutText = "__" then
+    API.Function("SetText",Input:=HomeYardage,SelectedName:="TimeoutTXT.Text",Value:="LAST TIMEOUT")
+    API.Function("TitleBeginAnimation",Input:=TimeoutsName,Value:="Page1")
+    Sleep(1000)
+    API.Function("TitleBeginAnimation",Input:=HomeYardage,Value:="Page1")
+    Sleep(250)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="__")
+    Sleep(50)
+    API.Function("SetText",Input:=ScorebugName,SelectedName:="HomeTimeouts.Text",Value:="")
+    API.Function("SetText",Input:="Home Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="")
+    API.Function("SetText",Input:="Away Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="")
+end if

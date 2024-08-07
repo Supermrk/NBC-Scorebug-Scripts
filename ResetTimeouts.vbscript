@@ -1,0 +1,7 @@
+API.Function("SetText",Input:="Home Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__ __ __")
+API.Function("SetText",Input:="Away Touchdown Stats Graphic",SelectedName:="HomeTimeouts.Text",Value:="__ __ __")
+API.Function("SetText",Input:="Home Touchdown Stats Graphic",SelectedName:="AwayTimeouts.Text",Value:="__ __ __")
+API.Function("SetText",Input:="Away Touchdown Stats Graphic",SelectedName:="AwayTimeouts.Text",Value:="__ __ __")
+API.Function("SetText",Input:="Main Scorebug",SelectedName:="HomeTimeouts.Text",Value:="__ __ __")
+API.Function("SetText",Input:="Main Scorebug",SelectedName:="AwayTimeouts.Text",Value:="__ __ __")
+

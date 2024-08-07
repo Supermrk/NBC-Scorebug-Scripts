@@ -1,0 +1,80 @@
+'Script created by Supermrk (mrkVideo.live)
+'==========================================
+'Title: Possession Controller
+'Desc: Controls Hiding/Showing the Possession Indicators on the Scorebug
+
+
+'SETTING VARIABLES
+'==========================================
+dim CompiledScorebug = "Scorebug"
+dim ScorebugName = "Main Scorebug"
+dim Scorebug = Input.Find(ScorebugName)
+dim AwayYardage = "Away Yardage"
+dim HomeYardage = "Home Yardage"
+
+'LOGIC
+'==========================================
+dim oldPoss as String = "temp"
+
+Do
+dim currentPoss as String = ""
+dim currentPosses1 as String = Scorebug.Text("HomeBPossess.Text")
+dim currentPosses2 as String = Scorebug.Text("HomeSPossess.Text")
+
+if currentPosses1 = "●" then
+    currentPoss = "●"
+else if currentPosses2 = "●" then
+    currentPoss = "●"
+End If
+
+if not currentPoss = oldPoss then
+    if (currentPoss = "●") then
+        API.Function("TitleBeginAnimation",Input:=AwayYardage,Value:="TransitionOut")
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+        Sleep(250)
+        API.Function("MultiViewOverlayOn", Input:=CompiledScorebug, Value:="2")
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossRight.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossRight.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossRight.Source")
+
+        API.Function("SetImageVisibleOn", Input:="Away Touchdown Stats Graphic", SelectedName:="PossRight.Source")
+        API.Function("SetImageVisibleOn", Input:="Home Touchdown Stats Graphic", SelectedName:="PossRight.Source")
+        API.Function("SetImageVisibleOff", Input:="Away Touchdown Stats Graphic", SelectedName:="PossLeft.Source")
+        API.Function("SetImageVisibleOff", Input:="Home Touchdown Stats Graphic", SelectedName:="PossLeft.Source")
+
+        API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="1")
+    else
+        API.Function("TitleBeginAnimation",Input:=HomeYardage,Value:="TransitionOut")
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossRight.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossRight.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossRight.Source")
+        Sleep(250)
+        API.Function("MultiViewOverlayOn", Input:=CompiledScorebug, Value:="1")
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOff", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+        Sleep(50)
+        API.Function("SetImageVisibleOn", Input:=ScorebugName, SelectedName:="PossLeft.Source")
+
+        API.Function("SetImageVisibleOff", Input:="Away Touchdown Stats Graphic", SelectedName:="PossRight.Source")
+        API.Function("SetImageVisibleOff", Input:="Home Touchdown Stats Graphic", SelectedName:="PossRight.Source")
+        API.Function("SetImageVisibleOn", Input:="Away Touchdown Stats Graphic", SelectedName:="PossLeft.Source")
+        API.Function("SetImageVisibleOn", Input:="Home Touchdown Stats Graphic", SelectedName:="PossLeft.Source")
+
+
+        API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="2")
+    End If
+
+    oldPoss = currentPoss
+End If
+
+Sleep(1000)
+Loop

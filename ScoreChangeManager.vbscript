@@ -1,0 +1,100 @@
+'Script created by Supermrk (mrkVideo.live)
+'==========================================
+'Title: Score Change Manager
+'Desc: Manages the text and animation for the Score Change Animation
+
+
+'SETTING VARIABLES
+'==========================================
+dim CompiledScorebug = "Scorebug"
+dim ScorebugName = "Main Scorebug"
+dim Scorebug = Input.Find(ScorebugName)
+
+dim oldAwayScore = 0
+dim oldHomeScore = 0
+
+'LOGIC
+'==========================================
+Do
+    dim newAwayScore = Scorebug.Text("AwayScoreInput.Text")
+    dim newAwayScoreNum = Integer.Parse(newAwayScore)
+
+    dim newHomeScore = Scorebug.Text("HomeScoreInput.Text")
+    dim newHomeScoreNum = Integer.Parse(newHomeScore)
+
+    if not oldAwayScore = newAwayScoreNum then
+        dim numDif = newAwayScoreNum-oldAwayScore
+        oldAwayScore = newAwayScoreNum
+
+        if numDif = 1 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-1, SelectedName:="AwayScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page1")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreMAIN.Text")
+        else if numDif = 2 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-2, SelectedName:="AwayScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-1, SelectedName:="AwayScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page2")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreMAIN.Text")
+        else if numDif = 3 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-3, SelectedName:="AwayScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-2 & Environment.NewLine & newAwayScoreNum-1, SelectedName:="AwayScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page3")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreMAIN.Text")
+        else if numDif = 6 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-6, SelectedName:="AwayScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum-5 & Environment.NewLine & newAwayScoreNum-4 & Environment.NewLine & newAwayScoreNum-3 & Environment.NewLine & newAwayScoreNum-2 & Environment.NewLine & newAwayScoreNum-1, SelectedName:="AwayScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page4")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreMAIN.Text")
+        else
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newAwayScoreNum, SelectedName:="AwayScoreEND.Text")
+        End If
+    End If
+	
+    if not oldHomeScore = newHomeScoreNum then
+        dim numDif = newHomeScoreNum-oldHomeScore
+        oldHomeScore = newHomeScoreNum
+
+        if numDif = 1 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-1, SelectedName:="HomeScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page5")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreMAIN.Text")
+        else if numDif = 2 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-2, SelectedName:="HomeScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-1, SelectedName:="HomeScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page6")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreMAIN.Text")
+        else if numDif = 3 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-3, SelectedName:="HomeScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-2 & Environment.NewLine & newHomeScoreNum-1, SelectedName:="HomeScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page7")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreMAIN.Text")
+        else if numDif = 6 then
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-6, SelectedName:="HomeScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum-5 & Environment.NewLine & newHomeScoreNum-4 & Environment.NewLine & newHomeScoreNum-3 & Environment.NewLine & newHomeScoreNum-2 & Environment.NewLine & newHomeScoreNum-1, SelectedName:="HomeScoreMID.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreEND.Text")
+            API.Function("TitleBeginAnimation", Input:=ScorebugName, Value:="Page8")
+            Sleep(3000)
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreMAIN.Text")
+        else
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreMAIN.Text")
+            API.Function("SetText", Input:=ScorebugName, Value:=newHomeScoreNum, SelectedName:="HomeScoreEND.Text")
+        End If
+    End If
+
+    Sleep(1000)
+Loop

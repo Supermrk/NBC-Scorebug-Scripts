@@ -1,0 +1,45 @@
+dim scoreBug = Input.Find("Main Scorebug")
+dim newvalue as string
+dim oldvalue as string = "0"
+dim ongoinganimation as Boolean = false
+dim count as integer = 0
+Do
+
+newvalue = scoreBug.Text("PClockTXT.Text")
+
+
+if not newvalue = oldvalue then
+
+dim newValueInt as Integer = Integer.Parse(newvalue)
+
+if newValueInt <= 10 then
+
+oldvalue = newvalue
+count = 0
+if not ongoinganimation = true then
+ongoinganimation = true
+API.Function("TitleBeginAnimation",Input:="Main Scorebug",Value:="Page9")
+
+end if
+
+
+else if ongoinganimation = true then
+
+count = count+1
+
+if count = 8 then
+
+
+count = 0
+ongoinganimation = false
+API.Function("TitleBeginAnimation",Input:="Main Scorebug",Value:="Page10")
+
+end if
+end if
+end if
+
+
+
+
+Sleep(500)
+Loop

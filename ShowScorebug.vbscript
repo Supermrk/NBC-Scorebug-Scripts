@@ -1,0 +1,39 @@
+'Script created by Supermrk (mrkVideo.live)
+'==========================================
+'Title: Show Scorebug
+'Desc: Shows the NBC Scorebug
+
+
+'SETTING VARIABLES
+'==========================================
+dim CompiledScorebug = "Scorebug"
+dim Scorebug = Input.Find("Main Scorebug")
+dim AwayYardage = "Away Yardage"
+dim HomeYardage = "Home Yardage"
+
+'LOGIC
+'==========================================
+dim currentPosses1 as String = Scorebug.Text("HomeBPossess.Text")
+dim currentPosses2 as String = Scorebug.Text("HomeSPossess.Text")
+
+API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="1")
+API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="2")
+API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="7")
+API.Function("MultiViewOverlayOff", Input:=CompiledScorebug, Value:="8")
+
+Sleep(100)
+
+API.Function("OverlayInput1In", Input:=CompiledScorebug)
+API.Function("MultiViewOverlayOn", Input:=CompiledScorebug, Value:="4")
+
+Sleep(5000)
+
+if currentPosses1 = "●" Or currentPosses2 = "●" then
+    API.Function("TitleBeginAnimation", Input:=HomeYardage, Value:="TransitionIn")
+    Sleep(100)
+    API.Function("MultiViewOverlayOn", Input:=CompiledScorebug, Value:="2")
+else
+    API.Function("TitleBeginAnimation", Input:=AwayYardage, Value:="TransitionIn")
+    Sleep(100)
+    API.Function("MultiViewOverlayOn", Input:=CompiledScorebug, Value:="1")
+End If
